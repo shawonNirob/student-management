@@ -21,3 +21,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+
+# Ignore environment variables
+/.env
+*.env
