@@ -1,14 +1,10 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import Session
-from sqlalchemy import text
-import db
+from app.api.routes.student_manual import router as student_router
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:3000",
-]
+origins = ["http://localhost:3000"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,10 +14,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(student_router, prefix="/students", tags=["students"])
+
 @app.get("/")
 def read_root():
-    return {"message": "Hello Test"}
-
-@app.get("/{students}")
-def get_students():
-    return {"message": "Nirob"}
+    return {"message": "Welcome to Students FastAPI"}
