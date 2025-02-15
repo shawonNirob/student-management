@@ -1,0 +1,36 @@
+Generic single-database configuration.
+
+Alembic is a database migration tool that helps to manage changes to the database schema without losing data. 
+It's built on top of SQLAlchemy and ensures that the database structure stays in sync with the SQLAlchemy models.
+
+# How to use Alembic
+
+1. Initialize the migration directory
+```
+alembic init alembic
+```
+
+2. Create a new migration
+```
+alembic revision --autogenerate -m "message"
+```
+
+3. Apply the migration
+```
+alembic upgrade head
+```
+
+4. Rollback the last migration
+```
+alembic downgrade -1
+```
+
+5. List all migrations
+```
+alembic history
+```
+
+6. Show the current revision
+```
+alembic current
+```
