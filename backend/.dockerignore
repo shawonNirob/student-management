@@ -1,0 +1,22 @@
+# Excluding Python cache files
+__pycache__
+*.py[cod]
+
+# Excluding virtual environments
+venv/
+env/
+
+# Excluding environment variable files
+*.env
+
+# Excluding git history and configuration
+.git
+.gitignore
+
+# Excluding build artifacts
+build/
+dist/
+
+# Excluding local logs and temporary files (if any)
+*.log
+*.tmp
