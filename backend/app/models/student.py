@@ -4,9 +4,11 @@ from app.db import Base
 class Student(Base):
     __tablename__ = "students"
 
-    student_id = Column(Integer, primary_key=True,nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    student_id = Column(Integer, unique=True, nullable=False)
     university_name = Column(String(250), nullable=True)
-    contact_number = Column(String(50), unique_key=True, nullable=False)
+    contact_number = Column(String(50), unique=True, nullable=False)
+    email = Column(String(100), unique=True, nullable=True)
     age = Column(Integer, nullable=True)
     gender = Column(String(50), nullable=True)
     name = Column(String(100), nullable=True)
