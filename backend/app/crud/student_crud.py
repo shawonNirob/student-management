@@ -10,7 +10,9 @@ def create_student(db: Session, student: StudentCreate):
     return new_student
 
 def get_students(db: Session, skip: int = 0, limit: int = 10):
-    return db.query(Student).offset(skip).limit(limit).all()
+    students = db.query(Student).offset(skip).limit(limit).all()
+    total_count = db.query(Student).count()
+    return students, total_count
 
 def get_student_by_id(db: Session, student_id: int):
     return db.query(Student).filter(Student.student_id == student_id).first()

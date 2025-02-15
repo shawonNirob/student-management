@@ -15,20 +15,11 @@ router = APIRouter()
 @router.post("/", response_model=StudentResponse, status_code=status.HTTP_201_CREATED)
 def create_new_student(student: StudentCreate, db: Session = Depends(get_db)):
     try:
-        # Check if student ID already exists
         existing_student = get_student_by_id(db, student.student_id)
         if existing_student:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Student with this ID already exists"
-            )
-
-        # Check if contact number already exists
-        existing_contact = get_student_by_contact(db, student.contact_number)
-        if existing_contact:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Student with this contact number already exists"
             )
 
         return create_student(db, student)
@@ -39,9 +30,13 @@ def create_new_student(student: StudentCreate, db: Session = Depends(get_db)):
             detail="Duplicate entry detected: Student ID or Contact Number already exists."
         )
 
-@router.get("/", response_model=List[StudentResponse], status_code=status.HTTP_200_OK)
+@router.get("/", response_model=dict, status_code=status.HTTP_200_OK)
 def fetch_students(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    return get_students(db, skip, limit)
+    students, total_count = get_students(db, skip, limit)
+    return {
+        "students": [StudentResponse.from_orm(student) for student in students],
+        "total_count": total_count
+    }
 
 @router.get("/{student_id}", response_model=StudentResponse, status_code=status.HTTP_200_OK)
 def fetch_student_by_id(student_id: int, db: Session = Depends(get_db)):
