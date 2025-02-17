@@ -60,13 +60,20 @@ def fetch_student_by_contact_number(contact_number: str, db: Session = Depends(g
 
 @router.put("/{student_id}", response_model=StudentResponse, status_code=status.HTTP_200_OK)
 def modify_student(student_id: int, student: StudentUpdate, db: Session = Depends(get_db)):
-    updated_student = update_student(db, student_id, student)
-    if not updated_student:
+    try:
+        updated_student = update_student(db, student_id, student)
+        if not updated_student:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, 
+                detail="Student not found"
+            )
+        return updated_student
+    except IntegrityError as e:
+        db.rollback()
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Student not found"
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Duplicate entry detected: Student ID or Contact Number already exists."
         )
-    return updated_student
 
 @router.delete("/{student_id}", status_code=status.HTTP_200_OK)
 def remove_student(student_id: int, db: Session = Depends(get_db)):
