@@ -61,8 +61,7 @@ CREATE TABLE `students` (
   `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `student_id` (`student_id`),
-  UNIQUE KEY `contact_number` (`contact_number`),
-  UNIQUE KEY `uq_students_email` (`email`)
+  UNIQUE KEY `contact_number` (`contact_number`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
