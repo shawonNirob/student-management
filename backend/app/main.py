@@ -2,7 +2,9 @@ from fastapi import FastAPI
 from sqlalchemy.sql import text
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes.student_manual import router as student_router
-from app.db import get_db
+from app.db import get_db, engine, Base
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
