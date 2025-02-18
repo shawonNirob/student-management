@@ -8,7 +8,7 @@ class Student(Base):
     student_id = Column(Integer, unique=True, nullable=False)
     university_name = Column(String(250), nullable=True)
     contact_number = Column(String(50), unique=True, nullable=False)
-    email = Column(String(100), unique=True, nullable=True)
+    email = Column(String(100), nullable=True)
     age = Column(Integer, nullable=True)
     gender = Column(String(50), nullable=True)
     name = Column(String(100), nullable=True)

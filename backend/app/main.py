@@ -2,7 +2,9 @@ from fastapi import FastAPI
 from sqlalchemy.sql import text
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes.student_manual import router as student_router
+from app.api.routes.student_AI import router as student_AI_router
 from app.db import get_db, engine, Base
+from app.config import settings
 
 Base.metadata.create_all(bind=engine)
 
@@ -19,6 +21,7 @@ app.add_middleware(
 )
 
 app.include_router(student_router, prefix="/students", tags=["students"])
+app.include_router(student_AI_router, prefix="/ai", tags=["ai"])
 
 @app.get("/")
 def read_root():
@@ -36,3 +39,4 @@ def db_status():
         return {"status": "ok"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
+
