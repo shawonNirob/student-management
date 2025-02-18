@@ -1,8 +1,8 @@
-#FastAPI Backend for Student Management System
+# FastAPI Backend for Student Management System
 
 ## Overview
 
-Welcome to the Student Information Management System This backend service is built with [FastAPI](https://fastapi.tiangolo.com/) and integrates with a fine-tuned [OpenAI](https://openai.com/) model to provide AI-assisted functionalities for managing student data.
+Welcome to the Student Information Management System This backend service is built with [FastAPI](https://fastapi.tiangolo.com/), MySQL database and integrates with a fine-tuned [OpenAI](https://openai.com/) model to provide AI-assisted functionalities for managing student data.
 
 ## Features
 
@@ -11,7 +11,6 @@ Welcome to the Student Information Management System This backend service is bui
 - **Dockerized Setup**: Simplified deployment and environment management with Docker Compose.
 
 ## Setup
-
 
 ### 1. Clone the Repository
 
