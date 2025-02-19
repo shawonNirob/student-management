@@ -100,7 +100,8 @@ If you prefer running the application locally without Docker:
 - **Create a New Student:** `POST /students/`
 - **Get All Students:** `GET /students/`
 - **Get a Student by ID:** `GET /students/{student_id}`
-- **Update a Student by Contact Number:** `PUT /students/{contact_number}`
+- **Get a Student by Contact Number:** `GET /students/contact/{contact_number}`
+- **Update a Student by ID:** `PUT /students/{student_id}`
 - **Delete a Student by ID:** `DELETE /students/{student_id}`
 - **AI-Asistant Query:** `POST /ai/ask`
 
