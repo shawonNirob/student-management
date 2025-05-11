@@ -1,4 +1,4 @@
-## FastAPI Backend for Student Management System
+## Student Management System, CRUD and RAG
 Create, Read, Update, and Delete student records. Interact with the student database using natural language. Simplified deployment and environment management with Docker Compose.
 
 ## API Documentation
